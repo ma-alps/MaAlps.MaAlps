@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace MaAlps\MaAlps\Http;
 
 use BEAR\Dev\Http\HttpResource;
-use MaAlps\MaAlps\Hypermedia\WorkflowTest as Workflow;
+use MaAlps\MaAlps\Hypermedia\MyAlpsWorkflowTest as Workflow;
 
-class WorkflowTest extends Workflow
+class MyAlpsWorkflowTest extends Workflow
 {
     protected function setUp(): void
     {
