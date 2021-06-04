@@ -57,7 +57,7 @@ class MyAlpsWorkflowTest extends TestCase
         $json = (string) $response;
         $href = json_decode($json)->_links->{'doCreate'}->href;
         $ro = $this->resource->post($href, []);
-        $this->assertSame(201, $ro->code);
+        $this->assertSame(StatusCode::CREATED, $ro->code);
 
         return $ro;
     }
@@ -69,7 +69,7 @@ class MyAlpsWorkflowTest extends TestCase
     {
         $href = $response->headers[ResponseHeader::LOCATION];
         $ro = $this->resource->get($href);
-        $this->assertSame(StatusCode::CREATED, $ro->code);
+        $this->assertSame(200, $ro->code);
 
         return $ro;
     }
@@ -95,7 +95,7 @@ class MyAlpsWorkflowTest extends TestCase
         $json = (string) $response;
         $href = json_decode($json)->_links->{'doEdit'}->href;
         $ro = $this->resource->put($href, []);
-        $this->assertSame(StatusCode::NO_CONTENT, $ro->code);
+        $this->assertSame(200, $ro->code);
 
         return $ro;
     }
@@ -107,8 +107,8 @@ class MyAlpsWorkflowTest extends TestCase
     {
         $json = (string) $response;
         $href = json_decode($json)->_links->{'doDelete'}->href;
-        $ro = $this->resource->put($href);
-        $this->assertSame(StatusCode::NO_CONTENT, $ro->code);
+        $ro = $this->resource->delete($href);
+        $this->assertSame(200, $ro->code);
 
         return $ro;
     }
