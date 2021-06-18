@@ -39,10 +39,10 @@ class MyAlpsWorkflowTest extends TestCase
     /**
      * @depends testIndex
      */
-    public function testGoMyAlps(ResourceObject $response): ResourceObject
+    public function testGoProfile(ResourceObject $response): ResourceObject
     {
         $json = (string) $response;
-        $href = json_decode($json)->_links->{'goMyAlps'}->href;
+        $href = json_decode($json)->_links->{'goProfile'}->href;
         $ro = $this->resource->get($href);
         $this->assertSame(200, $ro->code);
 
@@ -50,7 +50,7 @@ class MyAlpsWorkflowTest extends TestCase
     }
 
     /**
-     * @depends testGoMyAlps
+     * @depends testGoProfile
      */
     public function testDoCreate(ResourceObject $response): ResourceObject
     {
