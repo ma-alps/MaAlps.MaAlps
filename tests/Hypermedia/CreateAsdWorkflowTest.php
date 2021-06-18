@@ -12,11 +12,11 @@ use PHPUnit\Framework\TestCase;
 use function json_decode;
 
 /**
- * Identify users from ALPS items
+ * Create diagram directly
  *
- *　ALPSアイテムからユーザーを確認
+ * ダイアグラムを直接生成
  */
-class SeeUserWorkflowTest extends TestCase
+class CreateAsdWorkflowTest extends TestCase
 {
     protected ResourceInterface $resource;
 
@@ -37,25 +37,12 @@ class SeeUserWorkflowTest extends TestCase
     /**
      * @depends testIndex
      */
-    public function testGoAlpsItem(ResourceObject $response): ResourceObject
+    public function testDoCreateStateDiagram(ResourceObject $response): ResourceObject
     {
         $json = (string) $response;
-        $href = json_decode($json)->_links->{'goAlpsItem'}->href;
-        $ro = $this->resource->get($href, []);
-        $this->assertSame(200, $ro->code);
-
-        return $ro;
-    }
-
-    /**
-     * @depends testGoAlpsItem
-     */
-    public function testGoUser(ResourceObject $response): ResourceObject
-    {
-        $json = (string) $response;
-        $href = json_decode($json)->_links->{'goUser'}->href;
+        $href = json_decode($json)->_links->{'doCreateStateDiagram'}->href;
         $ro = $this->resource->get($href);
-        $this->assertSame(200, $ro->code);
+        $this->assertSame(201, $ro->code);
 
         return $ro;
     }
