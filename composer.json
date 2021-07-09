@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^8.0.0",
+        "ext-pdo": "*",
         "ext-json": "*",
         "bear/dotenv": "^1.0",
         "bear/package": "^1.10",
@@ -23,11 +24,12 @@
         "ray/media-query": "^0.2.1"
     },
     "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.4",
         "bear/api-doc": "1.x-dev",
         "bear/devtools": "^0.1",
-        "bamarni/composer-bin-plugin": "^1.4",
         "phpunit/phpunit": "^9.5",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-latest",
+        "robmorgan/phinx": "^0.12.7"
     },
     "autoload": {
         "psr-4": {

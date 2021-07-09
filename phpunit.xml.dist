@@ -15,5 +15,8 @@
     <testsuite name="http">
       <directory>tests/Http</directory>
     </testsuite>
+    <testsuite name="resource">
+      <directory>tests/Resource</directory>
+    </testsuite>
   </testsuites>
 </phpunit>
