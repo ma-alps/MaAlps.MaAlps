@@ -17,7 +17,7 @@ final class AlpsItemTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $resource = Injector::getInstance('api-app')->getInstance(ResourceInterface::class);
+        $resource = Injector::getInstance('test-api-app')->getInstance(ResourceInterface::class);
         assert($resource instanceof ResourceInterface);
         $this->resource = $resource;
     }

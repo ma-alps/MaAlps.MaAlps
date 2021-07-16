@@ -24,7 +24,7 @@ class MyAlpsWorkflowTest extends TestCase
 
     protected function setUp(): void
     {
-        $injector = Injector::getInstance('api-app');
+        $injector = Injector::getInstance('test-hal-api-app');
         $this->resource = $injector->getInstance(ResourceInterface::class);
     }
 
