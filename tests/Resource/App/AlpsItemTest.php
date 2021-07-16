@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MaAlps\MaAlps\Resource\App;
 
 use BEAR\Resource\ResourceInterface;
+use MaAlps\MaAlps\Entity\Alps;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
@@ -20,11 +21,22 @@ final class AlpsItemTest extends TestCase
         $resource = Injector::getInstance('test-api-app')->getInstance(ResourceInterface::class);
         assert($resource instanceof ResourceInterface);
         $this->resource = $resource;
+        $this->resource->post('/profile', [
+            'alps' => (array) Alps::factory(
+                id: '3',
+                isPublic: false,
+                title: 'The Example profile',
+                userId: 'NaokiTsuchiya',
+                asdUrl: 'https://ma-alps.github.io/spec/index.html',
+                profileUrl: 'https://ma-alps.github.io/spec/profile.xml',
+                mediaType: 'application/alps+xml',
+            ),
+        ]);
     }
 
     public function testGet(): void
     {
-        $ro = $this->resource->get('/alps-item', ['id' => '1']);
+        $ro = $this->resource->get('/alps-item', ['id' => '3']);
 
         $this->assertSame(200, $ro->code);
     }

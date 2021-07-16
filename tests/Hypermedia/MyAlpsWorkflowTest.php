@@ -59,7 +59,7 @@ class MyAlpsWorkflowTest extends TestCase
         $href = json_decode($json)->_links->{'doCreate'}->href;
         $query = [
             'alps' => (array) Alps::factory(
-                id: '1',
+                id: '2',
                 isPublic: false,
                 title: 'The Example profile',
                 userId: 'NaokiTsuchiya',
@@ -91,7 +91,7 @@ class MyAlpsWorkflowTest extends TestCase
      */
     public function testGoAlpsItemEdit(ResourceObject $response): ResourceObject
     {
-        $this->markTestIncomplete();
+        $this->markTestIncomplete(); // @phpstan-ignore-next-line
         $json = (string) $response;
         $href = json_decode($json)->_links->{'goAlpsItemEdit'}->href;
         $ro = $this->resource->get($href);
