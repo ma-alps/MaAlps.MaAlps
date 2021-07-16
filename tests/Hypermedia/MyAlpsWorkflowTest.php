@@ -44,7 +44,7 @@ class MyAlpsWorkflowTest extends TestCase
     {
         $json = (string) $response;
         $href = json_decode($json)->_links->{'goProfile'}->href;
-        $ro = $this->resource->get($href);
+        $ro = $this->resource->get($href, ['id' => '1']);
         $this->assertSame(200, $ro->code);
 
         return $ro;
