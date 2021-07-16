@@ -14,4 +14,26 @@ final class Alps
     public string $asdUrl;
     public string $profileUrl;
     public string $mediaType;
+
+    public static function factory(
+        string $id,
+        bool $isPublic,
+        string $title,
+        string $userId,
+        string $asdUrl,
+        string $profileUrl,
+        string $mediaType,
+    ): self
+    {
+        $alps = new self();
+        $alps->id = $id;
+        $alps->isPublic = $isPublic;
+        $alps->title = $title;
+        $alps->userId = $userId;
+        $alps->asdUrl = $asdUrl;
+        $alps->profileUrl = $profileUrl;
+        $alps->mediaType = $mediaType;
+
+        return $alps;
+    }
 }
