@@ -8,6 +8,7 @@ use BEAR\Resource\ResourceInterface;
 use BEAR\Resource\ResourceObject;
 use Koriym\HttpConstants\ResponseHeader;
 use Koriym\HttpConstants\StatusCode;
+use MaAlps\MaAlps\Entity\Alps;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
@@ -56,7 +57,16 @@ class MyAlpsWorkflowTest extends TestCase
     {
         $json = (string) $response;
         $href = json_decode($json)->_links->{'doCreate'}->href;
-        $ro = $this->resource->post($href, []);
+        $query = ['alps' => (array) Alps::factory(
+            id: '1',
+            isPublic: false,
+            title: "The Example profile",
+            userId: 'NaokiTsuchiya',
+            asdUrl: "https://ma-alps.github.io/spec/index.html",
+            profileUrl: "https://ma-alps.github.io/spec/profile.xml",
+            mediaType: "application/alps+xml",
+        )];
+        $ro = $this->resource->post($href, $query);
         $this->assertSame(StatusCode::CREATED, $ro->code);
 
         return $ro;
