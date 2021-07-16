@@ -16,6 +16,7 @@ final class Alps extends AbstractMigration
             ->addColumn('asd_url', 'string')
             ->addColumn('profile_url', 'string')
             ->addColumn('media_type', 'string')
+            ->addIndex('id', ['unique' => true])
             ->create();
     }
 }
