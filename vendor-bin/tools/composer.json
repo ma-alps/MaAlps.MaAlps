@@ -1,7 +1,7 @@
 {
     "name": "bear/qatools",
     "description": "QA tools",
-    "require": {
+    "require-dev": {
         "doctrine/coding-standard": "^9.0",
         "phpmd/phpmd": "^2.10",
         "phpmetrics/phpmetrics": "^2.7",
