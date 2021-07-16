@@ -23,8 +23,7 @@ final class Alps
         string $asdUrl,
         string $profileUrl,
         string $mediaType,
-    ): self
-    {
+    ): self {
         $alps = new self();
         $alps->id = $id;
         $alps->isPublic = $isPublic;

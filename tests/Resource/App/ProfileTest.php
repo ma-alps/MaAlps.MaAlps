@@ -30,14 +30,14 @@ final class ProfileTest extends TestCase
             'alps' => (array) Alps::factory(
                 id: '1',
                 isPublic: false,
-                title: "The Example profile",
+                title: 'The Example profile',
                 userId: 'NaokiTsuchiya',
-                asdUrl: "https://ma-alps.github.io/spec/index.html",
-                profileUrl: "https://ma-alps.github.io/spec/profile.xml",
-                mediaType: "application/alps+xml",
-            )
+                asdUrl: 'https://ma-alps.github.io/spec/index.html',
+                profileUrl: 'https://ma-alps.github.io/spec/profile.xml',
+                mediaType: 'application/alps+xml',
+            ),
         ]);
-        $this->assertSame(201 , $ro->code);
+        $this->assertSame(201, $ro->code);
         $this->assertSame('/alps-item?id=1', $ro->headers[ResponseHeader::LOCATION]);
     }
 }

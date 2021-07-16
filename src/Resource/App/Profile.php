@@ -16,10 +16,11 @@ class Profile extends ResourceObject
 {
     public function __construct(
         private AlpsCommandInterface $command
-    ) {}
+    ) {
+    }
 
     #[Link(rel: 'doCreate', href: '/profile')]
-    public function onGet(string $id)
+    public function onGet(string $id): static
     {
         return $this;
     }

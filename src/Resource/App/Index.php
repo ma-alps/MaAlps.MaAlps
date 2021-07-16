@@ -9,7 +9,6 @@ use BEAR\Resource\ResourceObject;
 
 class Index extends ResourceObject
 {
-
     #[Link(rel: 'goProfile', href: '/profile{?id}')]
     public function onGet(): static
     {
