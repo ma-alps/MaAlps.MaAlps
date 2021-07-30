@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace MaAlps\MaAlps\Resource\App;
 
 use BEAR\Resource\ResourceInterface;
+use Koriym\HttpConstants\ResponseHeader;
 use MaAlps\MaAlps\Entity\Alps;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
 use function assert;
 
-final class AlpsItemTest extends TestCase
+final class ProfileTest extends TestCase
 {
     private ResourceInterface $resource;
 
@@ -21,9 +22,13 @@ final class AlpsItemTest extends TestCase
         $resource = Injector::getInstance('test-api-app')->getInstance(ResourceInterface::class);
         assert($resource instanceof ResourceInterface);
         $this->resource = $resource;
-        $this->resource->post('/profile', [
+    }
+
+    public function testPost(): void
+    {
+        $ro = $this->resource->post('/profile', [
             'alps' => (array) Alps::factory(
-                id: '3',
+                id: '1',
                 isPublic: false,
                 title: 'The Example profile',
                 userId: 'NaokiTsuchiya',
@@ -32,12 +37,7 @@ final class AlpsItemTest extends TestCase
                 mediaType: 'application/alps+xml',
             ),
         ]);
-    }
-
-    public function testGet(): void
-    {
-        $ro = $this->resource->get('/alps-item', ['id' => '3']);
-
-        $this->assertSame(200, $ro->code);
+        $this->assertSame(201, $ro->code);
+        $this->assertSame('/alps-item?id=1', $ro->headers[ResponseHeader::LOCATION]);
     }
 }

@@ -11,7 +11,7 @@ class AlpsItem extends ResourceObject
 {
     public function __construct(
         private AlpsQueryInterface $query
-    ) {}
+    ){}
 
     /**
      * @param string $id Alps Id

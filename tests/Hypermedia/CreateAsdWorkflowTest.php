@@ -22,7 +22,7 @@ class CreateAsdWorkflowTest extends TestCase
 
     protected function setUp(): void
     {
-        $injector = Injector::getInstance('api-app');
+        $injector = Injector::getInstance('test-api-app');
         $this->resource = $injector->getInstance(ResourceInterface::class);
     }
 
@@ -39,6 +39,7 @@ class CreateAsdWorkflowTest extends TestCase
      */
     public function testDoCreateStateDiagram(ResourceObject $response): ResourceObject
     {
+        $this->markTestIncomplete(); // @phpstan-ignore-next-line
         $json = (string) $response;
         $href = json_decode($json)->_links->{'doCreateStateDiagram'}->href;
         $ro = $this->resource->get($href);
