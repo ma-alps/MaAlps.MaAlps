@@ -58,7 +58,7 @@ class MyAlpsWorkflowTest extends TestCase
         $json = (string) $response;
         $href = json_decode($json)->_links->{'doCreate'}->href;
         $query = [
-            'alps' => (array) Alps::factory(
+            'alpsItem' => (array) Alps::factory(
                 id: '2',
                 isPublic: false,
                 title: 'The Example profile',

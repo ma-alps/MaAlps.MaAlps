@@ -27,7 +27,7 @@ final class ProfileTest extends TestCase
     public function testPost(): void
     {
         $ro = $this->resource->post('/profile', [
-            'alps' => (array) Alps::factory(
+            'alpsItem' => (array) Alps::factory(
                 id: '1',
                 isPublic: false,
                 title: 'The Example profile',
