@@ -6,7 +6,7 @@ namespace MaAlps\MaAlps\Resource\App;
 
 use BEAR\Resource\ResourceInterface;
 use Koriym\HttpConstants\ResponseHeader;
-use MaAlps\MaAlps\Entity\Alps;
+use MaAlps\MaAlps\Entity\AlpsItem;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
@@ -27,7 +27,7 @@ final class ProfileTest extends TestCase
     public function testPost(): void
     {
         $ro = $this->resource->post('/profile', [
-            'alps' => (array) Alps::factory(
+            'alpsItem' => (array) AlpsItem::factory(
                 id: '1',
                 isPublic: false,
                 title: 'The Example profile',
