@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace MaAlps\MaAlps\Query;
 
-use MaAlps\MaAlps\Entity\Alps;
+use MaAlps\MaAlps\Entity\AlpsItem;
 use Ray\MediaQuery\Annotation\DbQuery;
 
 interface AlpsQueryInterface
 {
-    #[DbQuery('alps_item', entity: Alps::class)]
-    public function item(string $id): Alps;
+    #[DbQuery('alps_item', entity: AlpsItem::class)]
+    public function item(string $id): AlpsItem;
 
     /**
-     * @return array<Alps>
+     * @return array<AlpsItem>
      */
     #[DbQuery('alps_list')]
     public function list(): array;

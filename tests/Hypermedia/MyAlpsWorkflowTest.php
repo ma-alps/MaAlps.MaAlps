@@ -8,7 +8,7 @@ use BEAR\Resource\ResourceInterface;
 use BEAR\Resource\ResourceObject;
 use Koriym\HttpConstants\ResponseHeader;
 use Koriym\HttpConstants\StatusCode;
-use MaAlps\MaAlps\Entity\Alps;
+use MaAlps\MaAlps\Entity\AlpsItem;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
@@ -58,7 +58,7 @@ class MyAlpsWorkflowTest extends TestCase
         $json = (string) $response;
         $href = json_decode($json)->_links->{'doCreate'}->href;
         $query = [
-            'alpsItem' => (array) Alps::factory(
+            'alpsItem' => (array) AlpsItem::factory(
                 id: '2',
                 isPublic: false,
                 title: 'The Example profile',

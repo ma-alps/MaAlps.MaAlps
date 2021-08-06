@@ -9,7 +9,7 @@ use BEAR\Resource\Annotation\Link;
 use BEAR\Resource\ResourceObject;
 use Koriym\HttpConstants\ResponseHeader;
 use Koriym\HttpConstants\StatusCode;
-use MaAlps\MaAlps\Entity\Alps;
+use MaAlps\MaAlps\Entity\AlpsItem;
 use MaAlps\MaAlps\Query\AlpsCommandInterface;
 
 class Profile extends ResourceObject
@@ -26,19 +26,19 @@ class Profile extends ResourceObject
     }
 
     #[JsonSchema(params: 'doCreate.json')]
-    public function onPost(Alps $alps): static
+    public function onPost(AlpsItem $alpsItem): static
     {
         $this->command->add(
-            id: $alps->id,
-            isPublic: $alps->isPublic,
-            title: $alps->title,
-            userId: $alps->userId,
-            asdUrl: $alps->asdUrl,
-            profileUrl: $alps->profileUrl,
-            mediaType: $alps->mediaType,
+            id: $alpsItem->id,
+            isPublic: $alpsItem->isPublic,
+            title: $alpsItem->title,
+            userId: $alpsItem->userId,
+            asdUrl: $alpsItem->asdUrl,
+            profileUrl: $alpsItem->profileUrl,
+            mediaType: $alpsItem->mediaType,
         );
         $this->code = StatusCode::CREATED;
-        $this->headers[ResponseHeader::LOCATION] = '/alps-item?id=' . $alps->id;
+        $this->headers[ResponseHeader::LOCATION] = '/alps-item?id=' . $alpsItem->id;
 
         return $this;
     }

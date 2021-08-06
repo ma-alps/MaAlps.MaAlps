@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MaAlps\MaAlps\Entity;
 
 /** @psalm-immutable */
-final class Alps
+final class AlpsItem
 {
     public string $id;
     public bool $isPublic;

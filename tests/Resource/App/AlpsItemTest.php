@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MaAlps\MaAlps\Resource\App;
 
 use BEAR\Resource\ResourceInterface;
-use MaAlps\MaAlps\Entity\Alps;
+use MaAlps\MaAlps\Entity\AlpsItem;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
@@ -22,7 +22,7 @@ final class AlpsItemTest extends TestCase
         assert($resource instanceof ResourceInterface);
         $this->resource = $resource;
         $this->resource->post('/profile', [
-            'alps' => (array) Alps::factory(
+            'alpsItem' => (array) AlpsItem::factory(
                 id: '3',
                 isPublic: false,
                 title: 'The Example profile',
