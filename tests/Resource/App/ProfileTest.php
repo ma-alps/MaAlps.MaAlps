@@ -6,6 +6,7 @@ namespace MaAlps\MaAlps\Resource\App;
 
 use BEAR\Resource\ResourceInterface;
 use Koriym\HttpConstants\ResponseHeader;
+use Koriym\HttpConstants\StatusCode;
 use MaAlps\MaAlps\Entity\AlpsItem;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
@@ -39,5 +40,16 @@ final class ProfileTest extends TestCase
         ]);
         $this->assertSame(201, $ro->code);
         $this->assertSame('/alps-item?id=1', $ro->headers[ResponseHeader::LOCATION]);
+    }
+
+    /** @depends testPost */
+    public function testDelete(): void
+    {
+        $ro = $this->resource->delete('/profile', [
+            'id' => 'NaokiTsuchiya',
+            'alpsItemId' => '1',
+        ]);
+
+        $this->assertSame(StatusCode::OK, $ro->code);
     }
 }
