@@ -7,6 +7,7 @@ namespace MaAlps\MaAlps\Module;
 use BEAR\Dotenv\Dotenv;
 use BEAR\Package\AbstractAppModule;
 use BEAR\Package\PackageModule;
+use BEAR\Resource\Module\JsonSchemaModule;
 use Ray\AuraSqlModule\AuraSqlModule;
 use Ray\IdentityValueModule\IdentityValueModule;
 use Ray\MediaQuery\DbQueryConfig;
@@ -39,5 +40,9 @@ class AppModule extends AbstractAppModule
         );
         $this->install(new IdentityValueModule());
         $this->install(new PackageModule());
+        $this->install(new JsonSchemaModule(
+            $this->appMeta->appDir . '/vendor/ma-alps/spec/schema/response',
+            $this->appMeta->appDir . '/vendor/ma-alps/spec/schema/request'
+        ));
     }
 }
