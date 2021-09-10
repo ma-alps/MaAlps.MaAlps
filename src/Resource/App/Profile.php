@@ -10,6 +10,7 @@ use BEAR\Resource\ResourceInterface;
 use BEAR\Resource\ResourceObject;
 use Koriym\HttpConstants\ResponseHeader;
 use Koriym\HttpConstants\StatusCode;
+use MaAlps\MaAlps\Auth\UserIdVerifierInterface;
 use MaAlps\MaAlps\Entity\AlpsItem;
 use MaAlps\MaAlps\Query\AlpsCommandInterface;
 
@@ -19,7 +20,8 @@ class Profile extends ResourceObject
 {
     public function __construct(
         private AlpsCommandInterface $command,
-        private ResourceInterface $resource
+        private ResourceInterface $resource,
+        private UserIdVerifierInterface $userIdVerifier
     ) {
     }
 
@@ -32,6 +34,12 @@ class Profile extends ResourceObject
     #[JsonSchema(params: 'doCreate.json')]
     public function onPost(AlpsItem $alpsItem): static
     {
+        if (! $this->userIdVerifier->verify($alpsItem->userId)) {
+            $this->code = StatusCode::FORBIDDEN;
+
+            return $this;
+        }
+
         $this->command->add(
             id: $alpsItem->id,
             isPublic: $alpsItem->isPublic,
@@ -49,6 +57,21 @@ class Profile extends ResourceObject
 
     public function onDelete(string $id, string $alpsItemId): Profile
     {
+        if (! $this->userIdVerifier->verify($id)) {
+            $this->code = StatusCode::FORBIDDEN;
+
+            return $this;
+        }
+
+        $ro = $this->resource->get('/alps-item', ['id' => $alpsItemId]);
+
+        //TODO: $ro->code === 404 のケース
+        if ($ro->body['user_id'] !== $id) {
+            $this->code = StatusCode::FORBIDDEN;
+
+            return $this;
+        }
+
         $this->command->delete(
             id: $alpsItemId,
             userId: $id,

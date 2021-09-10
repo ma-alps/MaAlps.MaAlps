@@ -6,6 +6,8 @@ namespace MaAlps\MaAlps\Module;
 
 use BEAR\Dotenv\Dotenv;
 use BEAR\Package\AbstractAppModule;
+use MaAlps\MaAlps\Auth\FakeUserIdVerifier;
+use MaAlps\MaAlps\Auth\UserIdVerifierInterface;
 use Ray\AuraSqlModule\AuraSqlModule;
 
 use function dirname;
@@ -24,5 +26,6 @@ class TestModule extends AbstractAppModule
                 (string) getenv('MA_DB_SLAVE')
             )
         );
+        $this->bind(UserIdVerifierInterface::class)->to(FakeUserIdVerifier::class);
     }
 }
