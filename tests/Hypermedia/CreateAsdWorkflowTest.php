@@ -22,7 +22,7 @@ class CreateAsdWorkflowTest extends TestCase
 
     protected function setUp(): void
     {
-        $injector = Injector::getInstance('test-api-app');
+        $injector = Injector::getInstance('test-hal-api-app');
         $this->resource = $injector->getInstance(ResourceInterface::class);
     }
 
