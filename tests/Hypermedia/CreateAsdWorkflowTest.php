@@ -10,7 +10,11 @@ use BEAR\Resource\ResourceObject;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
+use function file_get_contents;
 use function json_decode;
+use function stream_get_contents;
+
+use const JSON_THROW_ON_ERROR;
 
 /**
  * Create diagram directly
@@ -42,12 +46,12 @@ class CreateAsdWorkflowTest extends TestCase
      */
     public function testDoCreateStateDiagram(ResourceObject $response): ResourceObject
     {
-        $href = json_decode(json: (string)$response, flags: JSON_THROW_ON_ERROR)
+        $href = json_decode(json: (string) $response, flags: JSON_THROW_ON_ERROR)
             ->_links->{'doCreateStateDiagram'}
             ->href;
 
         $ro = $this->resource->get($href, [
-            'profileFile' => file_get_contents($this->meta->appDir . '/var/mock/blog/profile.xml')
+            'profileFile' => file_get_contents($this->meta->appDir . '/var/mock/blog/profile.xml'),
         ]);
 
         $this->assertStringEqualsFile(
@@ -57,6 +61,7 @@ class CreateAsdWorkflowTest extends TestCase
 
         $this->assertSame(201, $ro->code);
         $this->assertSame('image/svg+xml', $ro->headers['Content-Type']);
+
         return $ro;
     }
 }
