@@ -13,6 +13,10 @@ class StateDiagram extends ResourceObject
 {
     use StreamTransferInject;
 
+    public $headers = [
+        'Content-Type' => 'image/svg+xml',
+    ];
+
     public function __construct(
         private AbstractAppMeta $meta
     ){
@@ -20,13 +24,13 @@ class StateDiagram extends ResourceObject
 
     public function onGet(string $profileFile): static
     {
-        $svg = file_get_contents($this->meta->appDir . '/var/mock/blog/profile.svg');
+        $filePath = $this->meta->appDir . '/var/mock/blog/profile.svg';
+        $fp = fopen($filePath, 'rb');
+        if ($fp === false) {
+            throw new \RuntimeException("failed to open file: {$filePath}");
+        }
+        $this->body = $fp;
 
-        $outputPath = sprintf('%s/%s.profile.svg', $this->meta->tmpDir, \hash('sha256', $svg));
-        file_put_contents($outputPath, $svg);
-        $this->headers = [
-            'Content-Location' => $outputPath
-        ];
         $this->code = StatusCode::CREATED;
         return $this;
     }
