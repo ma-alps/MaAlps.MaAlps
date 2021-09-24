@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73d5c415c83d184216b4071e14bc7974",
+    "content-hash": "87f729d29a0a7166d7dec6417884487c",
     "packages": [
         {
             "name": "aura/cli",
@@ -8380,9 +8380,9 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^8.0.0",
-        "ext-pdo": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
