@@ -24,6 +24,6 @@ final class StateDiagramTest extends TestCase
 
     public function testGet(): void
     {
-        $this->markTestIncomplete(); // @phpstan-ignore-line
+        $this->markTestIncomplete();
     }
 }

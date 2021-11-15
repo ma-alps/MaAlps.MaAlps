@@ -16,6 +16,7 @@ class StateDiagram extends ResourceObject
 {
     use StreamTransferInject;
 
+    /** @var array<string, string> */
     public $headers = ['Content-Type' => 'image/svg+xml'];
 
     public function __construct(
