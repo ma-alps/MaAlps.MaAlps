@@ -46,7 +46,6 @@
         }
     },
     "scripts": {
-        "post-update-cmd": "@setup",
         "post-install-cmd": "@composer bin all install --ansi",
         "setup": "php bin/setup.php",
         "compile": "./vendor/bin/bear.compile 'MaAlps\\MaAlps' prod-app ./",
