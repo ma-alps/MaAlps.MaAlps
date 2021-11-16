@@ -16,7 +16,7 @@ jobs:
         php-version:
           - '8.0'
     env:
-      MA_DB_HOST: 127.0.0.1
+      MA_DB_HOST: localhost
       MA_DB_NAME: maalps
       MA_DB_USER: root
       MA_DB_PASS: root
@@ -34,7 +34,7 @@ jobs:
           coverage: pcov
           ini-values: zend.assertions=1
 
-      - name: Start mysql service
+      - name: Start MySQL service
         run: sudo /etc/init.d/mysql start
 
       - name: Verify MySQL connection
