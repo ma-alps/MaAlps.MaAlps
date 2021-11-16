@@ -1,0 +1,25 @@
+name: Metrics
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  phpmetrics-action:
+    runs-on: ubuntu-latest
+    name: PhpMetrics Action
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: PhpMetrics Scan
+        uses: umutphp/phpmetrics-action@v1
+        with:
+          folder: src
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v1
+        with:
+          name: HTML Report
+          path: phpmetrics.html
