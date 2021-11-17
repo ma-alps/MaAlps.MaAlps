@@ -1,0 +1,68 @@
+name: Continuous Integration
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  phpunit:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system:
+          - ubuntu-latest
+        php-version:
+          - '8.0'
+    env:
+      MA_DB_HOST: localhost
+      MA_DB_NAME: maalps
+      MA_DB_USER: root
+      MA_DB_PASS: root
+      MA_DB_SLAVE: ""
+      MA_DB_DSN: mysql:host=localhost;dbname=maalps
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+          ini-values: zend.assertions=1
+
+      - name: Start MySQL service
+        run: sudo /etc/init.d/mysql start
+
+      - name: Verify MySQL connection
+        run: |
+          mysql --version
+          mysql --protocol=tcp -hlocalhost -P3306 -uroot -proot -e "SHOW DATABASES"
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install highest dependencies
+        run: composer install --no-interaction --no-progress
+
+      - name: Run setup
+        run: composer setup
+
+      - name: Run test suite
+        run: ./vendor/bin/phpunit --coverage-clover=coverage.xml
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
