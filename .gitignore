@@ -21,5 +21,3 @@ autoload.php
 /.phpcs.xml
 /.phpcs-cache
 /vendor-bin/tools/vendor/
-/.phpunit.cache/
-/coverage.xml
