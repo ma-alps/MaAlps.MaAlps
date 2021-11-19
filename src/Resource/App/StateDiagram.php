@@ -29,9 +29,7 @@ class StateDiagram extends ResourceObject
         $filePath = $this->meta->appDir . '/var/mock/blog/profile.svg';
         $fp = fopen($filePath, 'rb');
         if ($fp === false) {
-            // @codeCoverageIgnoreStart
             throw new RuntimeException("failed to open file: {$filePath}");
-            // @codeCoverageIgnoreEnd
         }
 
         $this->body = $fp;

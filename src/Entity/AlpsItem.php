@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace MaAlps\MaAlps\Entity;
 
-/**
- * @psalm-immutable
- * @codeCoverageIgnore
- */
+/** @psalm-immutable */
 final class AlpsItem
 {
     public string $id;

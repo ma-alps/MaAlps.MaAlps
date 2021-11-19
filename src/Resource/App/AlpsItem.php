@@ -12,11 +12,7 @@ use MaAlps\MaAlps\Query\AlpsCommandInterface;
 use MaAlps\MaAlps\Query\AlpsQueryInterface;
 
 use function assert;
-use function property_exists;
 
-/**
- * @codeCoverageIgnore
- */
 class AlpsItem extends ResourceObject
 {
     public function __construct(
