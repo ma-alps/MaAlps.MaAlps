@@ -8,6 +8,9 @@ use BEAR\Resource\Annotation\Link;
 use BEAR\Resource\ResourceObject;
 use MaAlps\MaAlps\Query\AlpsQueryInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AlpsItemEdit extends ResourceObject
 {
     public function __construct(

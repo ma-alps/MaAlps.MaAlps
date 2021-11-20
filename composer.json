@@ -43,7 +43,8 @@
     "autoload-dev": {
         "psr-4": {
             "MaAlps\\MaAlps\\": "tests/"
-        }
+        },
+        "files": ["tests/src/deleteFiles.php"]
     },
     "scripts": {
         "post-install-cmd": "@composer bin all install --ansi",

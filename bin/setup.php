@@ -6,6 +6,9 @@ use BEAR\Dotenv\Dotenv;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
+// Delete tmp files
+deleteFiles(dirname(__DIR__) . '/var/tmp');
+
 if (! getenv('MA_DB_DSN')) {
     (new Dotenv())->load(dirname(__DIR__));
 }

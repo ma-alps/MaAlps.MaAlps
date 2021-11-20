@@ -13,6 +13,9 @@ use MaAlps\MaAlps\Query\AlpsQueryInterface;
 
 use function assert;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AlpsItem extends ResourceObject
 {
     public function __construct(
