@@ -9,9 +9,11 @@ use BEAR\Resource\ResourceObject;
 use BEAR\Streamer\StreamTransferInject;
 use Koriym\HttpConstants\StatusCode;
 use MaAlps\MaAlps\Alps\DiagramInterface;
+use MaAlps\MaAlps\Alps\StaticFile;
 use RuntimeException;
 
 use function fopen;
+use function random_int;
 
 class StateDiagram extends ResourceObject
 {
@@ -22,19 +24,20 @@ class StateDiagram extends ResourceObject
 
     public function __construct(
         private readonly AbstractAppMeta $meta,
-        private readonly DiagramInterface $diagram
+        private readonly DiagramInterface $diagram,
+        private readonly StaticFile $staticFile
     ) {
     }
 
     public function onGet(string $profileFile = ''): static
     {
-        $id = '1';
-        $profile = $this->meta->appDir . '/var/mock/blog/profile.xml';
-        $created = ($this->diagram)($profile, $id);
+        $id = (string) random_int(1, 100);
+        $profileFilePath = $this->staticFile->saveProfile($id, $profileFile);
+        $created = ($this->diagram)($profileFilePath, $id);
         $fp = fopen($created->svgFile, 'rb');
         if ($fp === false) {
             // @codeCoverageIgnoreStart
-            throw new RuntimeException("failed to open file: {$profile}");
+            throw new RuntimeException("failed to open file: {$profileFilePath}");
             // @codeCoverageIgnoreEnd
         }
 

@@ -9,6 +9,7 @@ use BEAR\Package\AbstractAppModule;
 use BEAR\Package\PackageModule;
 use MaAlps\MaAlps\Alps\Diagram;
 use MaAlps\MaAlps\Alps\DiagramInterface;
+use MaAlps\MaAlps\Alps\StaticFile;
 use MaAlps\MaAlps\Attribute\AlpsDir;
 use Ray\AuraSqlModule\AuraSqlModule;
 use Ray\IdentityValueModule\IdentityValueModule;
@@ -43,6 +44,7 @@ class AppModule extends AbstractAppModule
         $this->install(new IdentityValueModule());
         $this->bind()->annotatedWith(AlpsDir::class)->toInstance($this->appMeta->appDir . '/var/alps');
         $this->bind(DiagramInterface::class)->to(Diagram::class);
+        $this->bind(StaticFile::class);
         $this->install(new PackageModule());
     }
 }
