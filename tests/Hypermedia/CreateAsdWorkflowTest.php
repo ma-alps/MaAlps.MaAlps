@@ -11,16 +11,15 @@ use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
 use function file_get_contents;
-use function stream_get_contents;
 use function MaAlps\MaAlps\json_decode;
-
-use const JSON_THROW_ON_ERROR;
+use function stream_get_contents;
 
 /**
  * Create diagram directly
  *
  * ダイアグラムを直接生成
  */
+
 class CreateAsdWorkflowTest extends TestCase
 {
     protected ResourceInterface $resource;
