@@ -63,6 +63,10 @@
             "./vendor/bin/psalm --clear-cache",
             "rm -rf ./var/tmp/*.php"
         ],
+        "baseline": [
+            "./vendor/bin/phpstan analyse -configuration -c phpstan.neon --generate-baseline --memory-limit=-1",
+            "./vendor/bin/psalm --set-baseline=psalm-baseline.xml"
+        ],
         "sa": [
             "./vendor/bin/phpstan analyse -c phpstan.neon",
             "psalm --show-info=true"
