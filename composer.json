@@ -19,6 +19,7 @@
         "bear/resource": "^1.15",
         "bear/streamer": "^1.2",
         "bear/sunday": "^1.5",
+        "koriym/app-state-diagram": "^0.8",
         "koriym/http-constants": "^1.2",
         "ma-alps/spec": "dev-master",
         "ray/aop": "^2.10",
