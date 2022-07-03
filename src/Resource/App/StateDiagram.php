@@ -8,6 +8,7 @@ use BEAR\AppMeta\AbstractAppMeta;
 use BEAR\Resource\ResourceObject;
 use BEAR\Streamer\StreamTransferInject;
 use Koriym\HttpConstants\StatusCode;
+use MaAlps\MaAlps\Alps\DiagramInterface;
 use RuntimeException;
 
 use function fopen;
@@ -20,17 +21,20 @@ class StateDiagram extends ResourceObject
     public $headers = ['Content-Type' => 'image/svg+xml'];
 
     public function __construct(
-        private readonly AbstractAppMeta $meta
+        private readonly AbstractAppMeta $meta,
+        private readonly DiagramInterface $diagram
     ) {
     }
 
-    public function onGet(string $profileFile): static
+    public function onGet(string $profileFile = ''): static
     {
-        $filePath = $this->meta->appDir . '/var/mock/blog/profile.svg';
-        $fp = fopen($filePath, 'rb');
+        $id = '1';
+        $profile = $this->meta->appDir . '/var/mock/blog/profile.xml';
+        $created = ($this->diagram)($profile, $id);
+        $fp = fopen($created->svgFile, 'rb');
         if ($fp === false) {
             // @codeCoverageIgnoreStart
-            throw new RuntimeException("failed to open file: {$filePath}");
+            throw new RuntimeException("failed to open file: {$profile}");
             // @codeCoverageIgnoreEnd
         }
 
