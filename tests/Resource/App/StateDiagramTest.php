@@ -22,7 +22,7 @@ final class StateDiagramTest extends TestCase
         $this->resource = $resource;
     }
 
-    public function testGet(): void
+    public function testGet(): never
     {
         $this->markTestIncomplete();
     }
