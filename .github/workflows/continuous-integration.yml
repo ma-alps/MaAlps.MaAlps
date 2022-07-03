@@ -14,7 +14,7 @@ jobs:
         operating-system:
           - ubuntu-latest
         php-version:
-          - '8.0'
+          - 8.1
     env:
       MA_DB_HOST: localhost
       MA_DB_NAME: maalps
