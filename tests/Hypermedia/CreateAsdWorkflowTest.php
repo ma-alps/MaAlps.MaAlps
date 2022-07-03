@@ -58,7 +58,7 @@ class CreateAsdWorkflowTest extends TestCase
             stream_get_contents($ro->body)
         );
 
-        $this->assertSame(201, $ro->code);
+        $this->assertSame(200, $ro->code);
         $this->assertSame('image/svg+xml', $ro->headers['Content-Type']);
 
         return $ro;

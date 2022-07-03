@@ -39,7 +39,6 @@ class StateDiagram extends ResourceObject
         }
 
         $this->body = fopen($created->svgFile, 'rb');
-        $this->code = StatusCode::CREATED;
 
         return $this;
     }
