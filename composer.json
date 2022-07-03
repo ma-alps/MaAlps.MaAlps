@@ -39,7 +39,8 @@
     "autoload": {
         "psr-4": {
             "MaAlps\\MaAlps\\": "src/"
-        }
+        },
+        "files": ["function/json_decode.php"]
     },
     "autoload-dev": {
         "psr-4": {
