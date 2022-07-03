@@ -9,7 +9,7 @@ use Ray\MediaQuery\Annotation\DbQuery;
 
 interface AlpsQueryInterface
 {
-    #[DbQuery('alps_item', entity: AlpsItem::class)]
+    #[DbQuery('alps_item', entity: AlpsItem::class, type: 'row')]
     public function item(string $id): AlpsItem;
 
     /**
