@@ -63,7 +63,7 @@ final class AlpsItemTest extends TestCase
             [
                 'id' => '3',
                 'title' => 'updated',
-                'is_public' => '1',
+                'is_public' => 1,
                 'user_id' => 'NaokiTsuchiya',
                 'asd_url' => 'https://ma-alps.github.io/spec/index.html',
                 'profile_url' => 'https://ma-alps.github.io/spec/profile.xml',
