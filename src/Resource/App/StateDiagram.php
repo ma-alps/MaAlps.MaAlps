@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace MaAlps\MaAlps\Resource\App;
 
-use BEAR\AppMeta\AbstractAppMeta;
 use BEAR\Resource\ResourceObject;
 use BEAR\Streamer\StreamTransferInject;
 use Koriym\HttpConstants\StatusCode;
 use MaAlps\MaAlps\Alps\DiagramInterface;
 use MaAlps\MaAlps\Alps\StaticFile;
-use RuntimeException;
+use MaAlps\MaAlps\Exception\DiagramCreateFailedException;
 
 use function fopen;
 use function random_int;
@@ -23,7 +22,6 @@ class StateDiagram extends ResourceObject
     public $headers = ['Content-Type' => 'image/svg+xml'];
 
     public function __construct(
-        private readonly AbstractAppMeta $meta,
         private readonly DiagramInterface $diagram,
         private readonly StaticFile $staticFile
     ) {
@@ -34,15 +32,13 @@ class StateDiagram extends ResourceObject
         $id = (string) random_int(1, 100);
         $profileFilePath = $this->staticFile->saveProfile($id, $profileFile);
         $created = ($this->diagram)($profileFilePath, $id);
-        $fp = fopen($created->svgFile, 'rb');
-        if ($fp === false) {
+        if (! $created->isCreated) {
             // @codeCoverageIgnoreStart
-            throw new RuntimeException("failed to open file: {$profileFilePath}");
+            throw new DiagramCreateFailedException($profileFile, $id);
             // @codeCoverageIgnoreEnd
         }
 
-        $this->body = $fp;
-
+        $this->body = fopen($created->svgFile, 'rb');
         $this->code = StatusCode::CREATED;
 
         return $this;
