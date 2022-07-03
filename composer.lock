@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b0aba46a77e4a02e1fb4425e40795bf",
+    "content-hash": "19560de40113ff05c5600078ca192fe1",
     "packages": [
         {
             "name": "aura/cli",
@@ -5240,21 +5240,26 @@
         },
         {
             "name": "bear/devtools",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/koriym/BEAR.DevTools.git",
-                "reference": "5c39bda5a191db9ae820294cc87336cc2f900102"
+                "reference": "6c26718f95dfb01c2714d13cbef38e8a9ef5b027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/koriym/BEAR.DevTools/zipball/5c39bda5a191db9ae820294cc87336cc2f900102",
-                "reference": "5c39bda5a191db9ae820294cc87336cc2f900102",
+                "url": "https://api.github.com/repos/koriym/BEAR.DevTools/zipball/6c26718f95dfb01c2714d13cbef38e8a9ef5b027",
+                "reference": "6c26718f95dfb01c2714d13cbef38e8a9ef5b027",
                 "shasum": ""
             },
             "require": {
+                "aura/sql": "^3 || ^4 || ^5",
+                "bear/resource": "^1.17",
+                "ext-filter": "*",
                 "ext-json": "*",
                 "php": "^7.3 || ^8.0",
+                "psr/log": "^1 || ^2 || ^3",
+                "ray/di": "^2.14",
                 "symfony/process": "^5.2.7"
             },
             "require-dev": {
@@ -5284,9 +5289,9 @@
             ],
             "support": {
                 "issues": "https://github.com/koriym/BEAR.DevTools/issues",
-                "source": "https://github.com/koriym/BEAR.DevTools/tree/1.0.2"
+                "source": "https://github.com/koriym/BEAR.DevTools/tree/1.0.3"
             },
-            "time": "2021-08-20T04:06:37+00:00"
+            "time": "2022-07-03T09:29:33+00:00"
         },
         {
             "name": "cakephp/core",
