@@ -7,6 +7,9 @@ namespace MaAlps\MaAlps\Module;
 use BEAR\Dotenv\Dotenv;
 use BEAR\Package\AbstractAppModule;
 use BEAR\Package\PackageModule;
+use MaAlps\MaAlps\Alps\Diagram;
+use MaAlps\MaAlps\Alps\DiagramInterface;
+use MaAlps\MaAlps\Attribute\AlpsDir;
 use Ray\AuraSqlModule\AuraSqlModule;
 use Ray\IdentityValueModule\IdentityValueModule;
 use Ray\MediaQuery\DbQueryConfig;
@@ -38,6 +41,8 @@ class AppModule extends AbstractAppModule
             )
         );
         $this->install(new IdentityValueModule());
+        $this->bind()->annotatedWith(AlpsDir::class)->toInstance($this->appMeta->appDir . '/var/alps');
+        $this->bind(DiagramInterface::class)->to(Diagram::class);
         $this->install(new PackageModule());
     }
 }
