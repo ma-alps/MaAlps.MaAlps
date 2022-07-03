@@ -18,8 +18,8 @@ use function assert;
 class Profile extends ResourceObject
 {
     public function __construct(
-        private AlpsCommandInterface $command,
-        private ResourceInterface $resource
+        private readonly AlpsCommandInterface $command,
+        private readonly ResourceInterface $resource
     ) {
     }
 

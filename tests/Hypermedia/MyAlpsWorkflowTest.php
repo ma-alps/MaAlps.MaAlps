@@ -12,7 +12,7 @@ use MaAlps\MaAlps\Entity\AlpsItem;
 use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
-use function json_decode;
+use function \MaAlps\MaAlps\json_decode;
 
 /**
  * Create, edit, and delete Alps profile

@@ -20,7 +20,7 @@ class StateDiagram extends ResourceObject
     public $headers = ['Content-Type' => 'image/svg+xml'];
 
     public function __construct(
-        private AbstractAppMeta $meta
+        private readonly AbstractAppMeta $meta
     ) {
     }
 

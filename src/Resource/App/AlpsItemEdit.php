@@ -14,7 +14,7 @@ use MaAlps\MaAlps\Query\AlpsQueryInterface;
 class AlpsItemEdit extends ResourceObject
 {
     public function __construct(
-        private AlpsQueryInterface $query
+        private readonly AlpsQueryInterface $query
     ) {
     }
 
