@@ -42,7 +42,7 @@ class AppModule extends AbstractAppModule
             )
         );
         $this->install(new IdentityValueModule());
-        $this->bind()->annotatedWith(AlpsDir::class)->toInstance($this->appMeta->appDir . '/var/alps');
+        $this->bind()->annotatedWith(AlpsDir::class)->toInstance($this->appMeta->appDir . '/public/alps');
         $this->bind(DiagramInterface::class)->to(Diagram::class);
         $this->bind(Profile::class);
         $this->install(new PackageModule());
