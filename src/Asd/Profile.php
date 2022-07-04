@@ -37,8 +37,11 @@ final class Profile
         return $this->diagram->draw($profilePath);
     }
 
+    /**
+     * @return 'xml'|'json'
+     */
     private function getFileType(string $profile): string
     {
-        return 'xml';
+        return $profile[0] === '<' ? 'xml' : 'json';
     }
 }
