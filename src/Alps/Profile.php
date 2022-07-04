@@ -7,8 +7,8 @@ namespace MaAlps\MaAlps\Alps;
 use MaAlps\MaAlps\Attribute\AlpsDir;
 
 use function file_put_contents;
+use function MaAlps\MaAlps\mkdir;
 use function md5;
-use function mkdir;
 use function sprintf;
 
 final class Profile
@@ -26,7 +26,7 @@ final class Profile
     {
         $id = $this->getId($profileFile);
         $profilePath = sprintf('%s/%s/profile.%s', $this->alpsDir, $id, $this->getFileType($profileFile));
-        @mkdir(sprintf('%s/%s', $this->alpsDir, $id));
+        mkdir(sprintf('%s/%s', $this->alpsDir, $id));
         file_put_contents($profilePath, $profileFile);
 
         return $this->diagram->draw($profilePath);
