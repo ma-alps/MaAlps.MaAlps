@@ -18,8 +18,7 @@ class StateDiagram extends ResourceObject
     public function __construct(
         private readonly Profile $profile,
         private readonly HttpLinkFactoryInterface $linkFactory
-    ) {
-    }
+    ) {}
 
     /**
      * @param string $profileFile ALPS raw data
