@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MaAlps\MaAlps\Alps;
+namespace MaAlps\MaAlps\Asd;
 
 use PHPUnit\Framework\TestCase;
 

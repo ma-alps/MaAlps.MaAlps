@@ -6,7 +6,7 @@ namespace MaAlps\MaAlps\Resource\App;
 
 use BEAR\Resource\ResourceObject;
 use BEAR\Streamer\StreamTransferInject;
-use MaAlps\MaAlps\Alps\Profile;
+use MaAlps\MaAlps\Asd\Profile;
 
 use function fopen;
 
