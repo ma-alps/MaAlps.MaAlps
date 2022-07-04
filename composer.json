@@ -13,6 +13,7 @@
         "php": "^8.1",
         "ext-json": "*",
         "ext-pdo": "*",
+        "ext-hash": "*",
         "bear/app-meta": "^1.7",
         "bear/dotenv": "^1.0",
         "bear/package": "^1.10",
