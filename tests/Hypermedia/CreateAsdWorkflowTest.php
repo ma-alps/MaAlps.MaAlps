@@ -11,16 +11,15 @@ use MaAlps\MaAlps\Injector;
 use PHPUnit\Framework\TestCase;
 
 use function file_get_contents;
-use function json_decode;
+use function MaAlps\MaAlps\json_decode;
 use function stream_get_contents;
-
-use const JSON_THROW_ON_ERROR;
 
 /**
  * Create diagram directly
  *
  * ダイアグラムを直接生成
  */
+
 class CreateAsdWorkflowTest extends TestCase
 {
     protected ResourceInterface $resource;
@@ -46,7 +45,7 @@ class CreateAsdWorkflowTest extends TestCase
      */
     public function testDoCreateStateDiagram(ResourceObject $response): ResourceObject
     {
-        $href = json_decode(json: (string) $response, flags: JSON_THROW_ON_ERROR)
+        $href = json_decode(json: (string) $response)
             ->_links->{'doCreateStateDiagram'}
             ->href;
 

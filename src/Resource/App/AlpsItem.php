@@ -19,9 +19,9 @@ use function assert;
 class AlpsItem extends ResourceObject
 {
     public function __construct(
-        private AlpsQueryInterface $query,
-        private AlpsCommandInterface $command,
-        private ResourceInterface $resource
+        private readonly AlpsQueryInterface $query,
+        private readonly AlpsCommandInterface $command,
+        private readonly ResourceInterface $resource
     ) {
     }
 
