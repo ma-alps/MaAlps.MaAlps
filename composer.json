@@ -19,6 +19,7 @@
         "bear/resource": "^1.15",
         "bear/streamer": "^1.2",
         "bear/sunday": "^1.5",
+        "jetbrains/phpstorm-attributes": "^1.0",
         "koriym/app-state-diagram": "^0.8",
         "koriym/http-constants": "^1.2",
         "ma-alps/spec": "dev-master",

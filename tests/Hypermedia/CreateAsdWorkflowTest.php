@@ -60,6 +60,7 @@ class CreateAsdWorkflowTest extends TestCase
 
         $this->assertSame(200, $ro->code);
         $this->assertSame('image/svg+xml', $ro->headers['Content-Type']);
+        $this->assertStringContainsString('<http://localhost:8080/8gHDuw/profile.xml>; rel="alps_profile"', $ro->headers['Link']);
 
         return $ro;
     }
