@@ -26,6 +26,11 @@ final class Profile
     {
         $id = ($this->hash)($profileFile);
         $profilePath = sprintf('%s/%s/profile.%s', $this->alpsDir, $id, $this->getFileType($profileFile));
+        $created = Created::fromProfile($profileFile);
+        if ($created->isCreated()) {
+            return $created;
+        }
+
         mkdir(sprintf('%s/%s', $this->alpsDir, $id));
         file_put_contents($profilePath, $profileFile);
 
