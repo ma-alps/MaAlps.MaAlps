@@ -18,11 +18,11 @@ final class Diagram implements DiagramInterface
     {
         $created = Created::fromProfile($profileFilePath);
         $dot = (new DrawDiagram(new LabelName()))(new Profile($profileFilePath, new LabelName()));
-        file_put_contents($created->profileFile, $dot);
+        file_put_contents($created->dotFile, $dot);
         $cmd = "dot -Tsvg {$created->dotFile} -o {$created->svgFile}";
         passthru($cmd, $status);
         if ($status !== 0) {
-            throw new DiagramCreateFailedException($profileFilePath);
+            throw new DiagramCreateFailedException($profileFilePath, $cmd);
         }
 
         return $created;
