@@ -8,14 +8,14 @@ use MaAlps\MaAlps\Attribute\AlpsDir;
 
 use function file_put_contents;
 use function MaAlps\MaAlps\mkdir;
-use function md5;
 use function sprintf;
 
 final class Profile
 {
     public function __construct(
         #[AlpsDir] private readonly string $alpsDir,
-        private readonly DiagramInterface $diagram
+        private readonly DiagramInterface $diagram,
+        private readonly HashInterface $hash
     ) {
     }
 
@@ -24,17 +24,12 @@ final class Profile
      */
     public function put(string $profileFile): Created
     {
-        $id = $this->getId($profileFile);
+        $id = ($this->hash)($profileFile);
         $profilePath = sprintf('%s/%s/profile.%s', $this->alpsDir, $id, $this->getFileType($profileFile));
         mkdir(sprintf('%s/%s', $this->alpsDir, $id));
         file_put_contents($profilePath, $profileFile);
 
         return $this->diagram->draw($profilePath);
-    }
-
-    private function getId(string $profile): string
-    {
-        return md5($profile);
     }
 
     private function getFileType(string $profile): string
