@@ -7,7 +7,8 @@ namespace MaAlps\MaAlps\Alps;
 final class Created
 {
     public function __construct(
-        public readonly bool $isCreated,
+        public readonly string $profileFile,
+        public readonly string $dotFile,
         public readonly string $svgFile
     ) {
     }

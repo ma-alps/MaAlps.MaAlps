@@ -18,8 +18,9 @@ class DiagramTest extends TestCase
         $dotFile = sprintf('%s/alps.1.svg', $dir);
         @unlink($dotFile);
         $profile = dirname(__DIR__) . '/var/mock/blog/profile.xml';
-        $created = (new Diagram($dir))($profile, '1');
-        $this->assertTrue($created->isCreated);
+        $created = (new Diagram())->draw($profile);
         $this->assertFileExists($created->svgFile);
+        $this->assertFileExists($created->dotFile);
+        $this->assertFileExists($created->profileFile);
     }
 }

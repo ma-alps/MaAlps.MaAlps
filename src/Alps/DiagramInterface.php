@@ -6,5 +6,5 @@ namespace MaAlps\MaAlps\Alps;
 
 interface DiagramInterface
 {
-    public function __invoke(string $profile, string $id): Created;
+    public function draw(string $profileFilePath): Created;
 }
