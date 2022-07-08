@@ -53,13 +53,14 @@ class CreateAsdWorkflowTest extends TestCase
             'profileFile' => file_get_contents($this->meta->appDir . '/var/mock/blog/profile.xml'),
         ]);
 
-        $this->assertStringEqualsFile(
-            $this->meta->appDir . '/var/mock/blog/profile.svg',
+        $this->assertStringContainsString(
+            '<?xml version="1.0"',
             stream_get_contents($ro->body)
         );
 
-        $this->assertSame(201, $ro->code);
+        $this->assertSame(200, $ro->code);
         $this->assertSame('image/svg+xml', $ro->headers['Content-Type']);
+        $this->assertStringContainsString('<http://localhost:8080/8gHDuw/profile.xml>; rel="alps_profile"', $ro->headers['Link']);
 
         return $ro;
     }

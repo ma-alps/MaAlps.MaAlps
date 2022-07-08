@@ -13,12 +13,15 @@
         "php": "^8.1",
         "ext-json": "*",
         "ext-pdo": "*",
+        "ext-hash": "*",
         "bear/app-meta": "^1.7",
         "bear/dotenv": "^1.0",
         "bear/package": "^1.10",
         "bear/resource": "^1.15",
         "bear/streamer": "^1.2",
         "bear/sunday": "^1.5",
+        "jetbrains/phpstorm-attributes": "^1.0",
+        "koriym/app-state-diagram": "^0.8",
         "koriym/http-constants": "^1.2",
         "ma-alps/spec": "dev-master",
         "ray/aop": "^2.10",
@@ -39,7 +42,10 @@
         "psr-4": {
             "MaAlps\\MaAlps\\": "src/"
         },
-        "files": ["function/json_decode.php"]
+        "files": [
+            "function/json_decode.php",
+            "function/mkdir.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -49,6 +55,7 @@
     },
     "scripts": {
         "post-install-cmd": "@composer bin all install --ansi",
+        "post-update-cmd": "@composer bin all install --ansi",
         "setup": "php bin/setup.php",
         "compile": "./vendor/bin/bear.compile 'MaAlps\\MaAlps' prod-app ./",
         "doc": "./vendor/bin/apidoc",
