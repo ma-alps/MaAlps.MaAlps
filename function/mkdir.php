@@ -9,7 +9,7 @@ use function is_dir;
 
 function mkdir(string $directory): void
 {
-    if (! is_dir($directory) && !\mkdir($directory) && ! is_dir($directory)) {
+    if (! is_dir($directory) && !@\mkdir($directory) && ! is_dir($directory)) {
         throw new DirectoryNotCreatedException($directory);
     }
 }
