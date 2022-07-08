@@ -9,7 +9,7 @@ class RuntimeException extends \RuntimeException
     public function __toString(): string
     {
         $message = '';
-        foreach ($this as $key => $value) {
+        foreach ($this as $key => $value) { // @phpstan-ignore-line
             $message .= "{$key}: {$value} ";
         }
 
